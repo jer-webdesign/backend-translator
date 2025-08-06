@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluelingo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>   
+    <div class="main-container"> 
+        <div class="header">
+            <div class="logo-container">
+                <img src="bluelingo.svg" alt="Bluelingo Logo" class="logo">
+                <h1>BLUELINGO<br><span>Translation Buddy</span></h1>
+            </div>
+            <button class="theme-toggle-button" id="themeToggle" onclick="toggleTheme()">
+                <i class="fas fa-moon" id="themeIcon" title="Toggle light/dark mode"></i>
+            </button>
+        </div> 
+        
+        <div class="sub-container">
+            <div class="translator-wrapper">
+                <div class="translation-area">
+                    <div class="language-select">
+                        <div class="from-lang">
+            <div class="custom-dropdown from-lang-dropdown" id="fromLangDropdown">
+                <div class="dropdown-selected" id="fromLangDropdownSelected">
+                    <span>English</span>
+                    <span class="dropdown-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="dropdown-options" id="fromLangDropdownOptions">
+                    <div class="dropdown-option" data-value="en">English</div>
+                    <div class="dropdown-option" data-value="fil">Filipino</div>
+                    <div class="dropdown-option" data-value="es">Spanish</div>
+                    <div class="dropdown-option" data-value="pt">Portuguese</div>
+                    <div class="dropdown-option" data-value="fr">French</div>
+                    <div class="dropdown-option" data-value="de">German</div>
+                    <div class="dropdown-option" data-value="hi">Hindi</div>
+                    <div class="dropdown-option" data-value="ja">Japanese</div>
+                    <div class="dropdown-option" data-value="ko">Korean</div>
+                    <div class="dropdown-option" data-value="pa">Punjabi</div>
+                    <div class="dropdown-option" data-value="ru">Russian</div>
+                    <div class="dropdown-option" data-value="th">Thai</div>
+                    <div class="dropdown-option" data-value="vi">Vietnamese</div>
+                    <div class="dropdown-option" data-value="ar">Arabic</div>
+                    <div class="dropdown-option" data-value="it">Italian</div>
+                    <div class="dropdown-option" data-value="nl">Dutch</div>
+                    <div class="dropdown-option" data-value="sv">Swedish</div>
+                    <div class="dropdown-option" data-value="da">Danish</div>
+                    <div class="dropdown-option" data-value="no">Norwegian</div>
+                    <div class="dropdown-option" data-value="pl">Polish</div>
+                    <div class="dropdown-option" data-value="tr">Turkish</div>
+                    <div class="dropdown-option" data-value="he">Hebrew</div>
+                    <div class="dropdown-option" data-value="cs">Czech</div>
+                    <div class="dropdown-option" data-value="hu">Hungarian</div>
+                </div>
+            </div>
+                        </div>
+                        <div class="to-lang">
+                            <div class="custom-dropdown">
+                                <div class="dropdown-selected" id="dropdownSelected">
+                                    <span>Spanish</span> 
+                                    <span class="dropdown-arrow"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="dropdown-options" id="dropdownOptions">
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="select-all" class="select-all-checkbox">
+                                        <span>Select All</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="en" class="language-checkbox-dropdown">
+                                        <span>English</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="fil" class="language-checkbox-dropdown">  
+                                        <span>Filipino</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="es" class="language-checkbox-dropdown" checked> 
+                                        <span>Spanish</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="pt" class="language-checkbox-dropdown">
+                                        <span>Portuguese</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="fr" class="language-checkbox-dropdown">
+                                        <span>French</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="de" class="language-checkbox-dropdown">
+                                        <span>German</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="hi" class="language-checkbox-dropdown">
+                                        <span>Hindi</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="ja" class="language-checkbox-dropdown">
+                                        <span>Japanese</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="ko" class="language-checkbox-dropdown">
+                                        <span>Korean</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="pa" class="language-checkbox-dropdown">
+                                        <span>Punjabi</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="ru" class="language-checkbox-dropdown">
+                                        <span>Russian</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="th" class="language-checkbox-dropdown">
+                                        <span>Thai</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="vi" class="language-checkbox-dropdown">
+                                        <span>Vietnamese</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="ar" class="language-checkbox-dropdown">
+                                        <span>Arabic</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="it" class="language-checkbox-dropdown">
+                                        <span>Italian</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="nl" class="language-checkbox-dropdown">
+                                        <span>Dutch</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="sv" class="language-checkbox-dropdown">
+                                        <span>Swedish</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="da" class="language-checkbox-dropdown">
+                                        <span>Danish</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="no" class="language-checkbox-dropdown">
+                                        <span>Norwegian</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="pl" class="language-checkbox-dropdown">
+                                        <span>Polish</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="tr" class="language-checkbox-dropdown">
+                                        <span>Turkish</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="he" class="language-checkbox-dropdown">
+                                        <span>Hebrew</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="cs" class="language-checkbox-dropdown">
+                                        <span>Czech</span>
+                                    </label>
+                                    <label class="dropdown-option">
+                                        <input type="checkbox" value="hu" class="language-checkbox-dropdown">
+                                        <span>Hungarian</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div> 
+                    <div class="text-input-output">
+                        <div class="input-box">
+                            <div class="label-container">Input Text:</div>
+                            <textarea id="source"></textarea>
+                            <div class="text-area-actions input-actions-bottom">
+                                <button class="action-button trash-button" onclick="clearInput()">
+                                    <i class="fas fa-trash" title="Clear input"></i>
+                                </button>
+                                <span class="char-count" id="charCount">0/50000</span>
+                            </div>
+                        </div>
+                        <div class="translate-btn-between">
+                            <button class="translate-button" onclick="translateText()">Translate</button>
+                        </div>
+                        <div class="output-box">
+                            <div class="label-container">Result Text:</div>
+                            <div id="result" class="output-text-area">
+                                <p class="initial-message" >Translation will appear here</p>
+                            </div>                            
+                            <div class="output-buttons-container">
+                                <button class="action-button copy-button" id="copyButton" onclick="copyTranslation()">
+                                    <i class="fas fa-copy" title="Copy translation"></i>
+                                </button>
+                                <button class="action-button history-button" id="historyToggleButton" onclick="toggleHistoryPanel()">
+                                    <i class="fas fa-history" title="Show translation history"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="translate-btn-bottom">
+                        <button class="translate-button" onclick="translateText()">Translate</button>
+                    </div>                    
+
+                </div>
+            </div>
+            <div id="history-panel" class="history-container">
+                <div class="history-panel-inner">
+                    <div class="history-header">
+                        <h2>History</h2>
+                        <div class="history-header-actions"> <button class="clear-history-button" onclick="clearHistory()">Clear All</button>
+                            <button class="action-button history-close-button" onclick="toggleHistoryPanel()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="history-list-container" class="history-list">
+                        <p class="no-history">Your translation history will appear here.</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>  
+    <script src="script.js"></script>
+</body>
+</html>

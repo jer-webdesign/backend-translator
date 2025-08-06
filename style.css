@@ -1,0 +1,1122 @@
+/* 1. Root Variables (Light & Dark Mode)*/
+:root {
+    --primary-bg: #e3effe;
+    --secondary-bg: #ffffff;
+    --widget-bg: #f0f8ff;
+    --text-color: #1b192d;
+    --primary-accent: #2267d0;
+    --logospan-text:#8eb2e8;
+    --secondary-accent: #dbe9ff;
+    --border-color: #d1e3f8;
+    --header-text: #1f519c;
+    --icon-color: #495057;
+}
+
+body.dark-mode {
+    --primary-bg: #121a26;
+    --secondary-bg: #1a2333;
+    --widget-bg: #1a2333;
+    --text-color: #ffffff;
+    --primary-accent: #D06822;
+    --secondary-accent: #2b3e5a;
+    --border-color: #2a3b57;
+    --header-text: #e3effe;
+    --icon-color: #ced4da;
+}
+
+/* 2. Base & Page Layout */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;    
+    background-color: var(--widget-bg);
+    border-radius: 15px;
+    padding: 20px;
+    width: 70%;
+    min-width: 900px;
+    min-height: 530px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.translator-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.translation-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+}
+
+.from-lang .language-dropdown option {
+    font-size: 1.1em;
+}
+/* By default, both translate button containers are hidden. */
+/* Only one is shown at a time, depending on screen size. */
+.translate-btn-between,
+.translate-btn-bottom {
+    display: none;
+}
+
+
+.text-input-output {
+    /* display: grid; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+
+    /* grid-template-columns: 1fr 1fr; */
+    /* gap: 20px; */
+    /* flex-grow: 1; */
+}
+
+.input-box, .output-box {
+    width: 100%;
+}
+
+.translate-btn-bottom {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Hide both translate button containers by default */
+.translate-btn-between {
+    display: none;
+}
+
+
+/* 3. Component Styles */
+.header {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo { 
+    height: 90px;
+    width: 90px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--header-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.header h1 span {
+    display: block;
+    font-size: 0.5em;
+    font-weight: 400; /* Corrected font-weight value */
+    color: var(--logospan-text);
+    text-transform: none;
+    letter-spacing: normal;
+    margin-top: 2px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-button {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    padding: 0; 
+    border-radius: 50%;
+    color: var(--icon-color);
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--primary-accent);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(34, 103, 208, 0.3);
+}
+
+.theme-toggle-button:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle-button i {
+    transition: transform 0.5s ease-in-out;
+}
+
+body.dark-mode #fromLanguage.language-dropdown {
+    color: var(--text-color);
+    background-color: var(--secondary-bg);
+    border-color: var(--border-color);
+}
+
+body.dark-mode .theme-toggle-button i {
+    transform: rotate(360deg);
+}
+
+body:not(.dark-mode) .theme-toggle-button i {
+    transform: rotate(0deg);
+}
+
+body.dark-mode .theme-toggle-button {
+    color: #ffd700;
+}
+
+body.dark-mode .theme-toggle-button:hover {
+    background-color: var(--primary-accent);
+    color: white;
+    box-shadow: 0 4px 15px rgba(208, 104, 34, 0.3);
+}
+
+/* Language Select */
+.language-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Custom height for the from-language dropdown for better visual consistency */
+.from-lang {
+    flex: 1; 
+    font-weight: 400;    
+    position: relative;
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    height: 48px;  
+    min-height: 40px;
+    max-height: 56px;
+}
+
+.to-lang { 
+    flex: 1;
+    font-weight: 400;
+    position: relative;
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.language-select select {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 400;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+    /* Set the dropdown menu (open options) height to 233px */
+    /* This works for most browsers except native Windows select. For full control, use a custom dropdown. */
+    /* max-height: 233px; */
+    /* overflow-y: auto; */
+}
+
+.language-select select:focus {
+    outline: none;
+}
+
+.from-lang i,
+.to-lang i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--icon-color);
+    pointer-events: none;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+/* Custom Dropdown for Target Languages */
+.custom-dropdown {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    color: black;
+}
+
+.dropdown-selected {
+    background-color: transparent; /* Match original select background */
+    border: none; /* Match original select border */
+    border-radius: 10px;
+    padding: 12px 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    max-height: 233px;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--text-color); /* Match original select color */
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.dropdown-selected:hover {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(34, 103, 208, 0.1);
+}
+
+.dropdown-options {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background-color: var(--secondary-bg); /* Match original select dropdown background */
+    color: var(--text-color);
+    border: 1px solid var(--border-color); /* Match original select dropdown border */
+    border-radius: 10px;
+    max-height: 233px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-options.show {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease;
+}
+
+/* Custom height for language dropdown for better usability and visual consistency */
+/* .language-dropdown { */
+    /* position: absolute; */
+    /* top: calc(100% + 5px);
+    left: 0;
+    right: 0; */
+    /* background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px; */
+    /* max-height: 233px;
+    overflow-y: auto; */
+    /* z-index: 1000;
+    display: flex;
+    width: 100%; */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+/* } */
+
+
+
+.dropdown-option:last-child {
+    border-bottom: none;
+}
+
+.dropdown-option:hover {
+    background-color: var(--secondary-accent);
+}
+
+body.dark-mode .dropdown-option:hover {
+    background-color: #2a3b57; /* Use a distinct dark accent for hover in dark mode */
+    color: #fff;
+}
+
+.dropdown-option input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: var(--primary-accent);
+}
+
+/* Input/Output Text Boxes */
+.input-box,
+.output-box {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: var(--secondary-bg);
+    padding: 15px;
+    gap: 10px;
+    border: 1px solid var(--border-color);
+    height: 220px;
+    min-height: 220px;
+    box-sizing: border-box;
+    position: relative; /* Keep this to allow absolute positioning of children */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.input-box:focus-within,
+.output-box:focus-within {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(34, 103, 208, 0.1);
+}
+
+.label-container {
+    color: #6c757d;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.input-box textarea {
+    border: none;
+    flex-grow: 1;
+    resize: none;
+    background-color: transparent;
+    color: var(--text-color); /* Match original select option color */
+    font-size: 1.1em;
+    outline: none;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding-right: 5px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+}
+
+.input-box textarea::placeholder {
+    color: var(--icon-color);
+    opacity: 0.5;
+}
+
+/* output-text-area needs more bottom padding to not overlap buttons */
+.output-text-area {
+    flex-grow: 1;
+    resize: none;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 1.1em;
+    outline: none;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding-right: 60px; /* Increased to prevent overlap with buttons and scrollbar */
+    position: absolute;
+    top: 40px;
+    left: 15px;
+    right: 15px;
+    bottom: 50px;
+    padding-bottom: 10px; /* Increased padding to make space for buttons */
+}
+
+.output-text-area .initial-message {
+    text-align: center;
+    color: var(--icon-color);
+    opacity: 0.4;
+    font-size: 0.9em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 30px);
+    pointer-events: none;
+}
+
+/* Action buttons styling (shared for both input and output action buttons) */
+.action-button {
+    background: none;
+    border: none;
+    color: var(--icon-color);
+    font-size: 1.3em;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.action-button:hover {
+    background-color: var(--secondary-accent);
+    color: var(--primary-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Specific positioning for input box actions (trash & char count) */
+.input-actions-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-top: auto;
+    width: 100%;
+}
+
+/* Container for output box action buttons (copy and history) */
+.output-buttons-container {
+    position: absolute; /* Position relative to .output-box */
+    bottom: 10px; /* Align to the bottom of output-box */
+    right: 15px; /* Align to the right of output-box */
+    display: flex;
+    gap: 10px; /* Space between the buttons */
+    z-index: 5; /* Ensure buttons are above text area if needed */
+    background: var(--secondary-bg);
+    padding-left: 8px;
+    padding-right: 0;
+    /* Add a little left padding to ensure buttons don't overlap scrollbar */
+}
+
+
+/* Char count style */
+.char-count {
+    font-size: 0.9em;
+    color: var(--icon-color);
+    font-weight: 500;
+    margin-left: auto; /* Pushes char count to the right */
+}
+
+/* Character limit exceeded styling */
+.char-count.char-limit-exceeded {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* Copy button specific style for "copied" state */
+.copy-button.copied {
+    background-color: #28a745 !important;
+    color: white !important;
+    border-color: #28a745 !important;
+    opacity: 1;
+    font-size: 1.3em;
+    transform: none;
+    box-shadow: none;
+}
+
+.translate-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.translate-button {
+    background-color: var(--primary-accent);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    display: block;
+    box-shadow: 0 2px 8px rgba(34, 103, 208, 0.2);
+}
+
+.translate-button:hover {
+    opacity: 0.9;
+    background-color: var(--primary-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(34, 103, 208, 0.3);
+}
+
+.translate-button:active {
+    transform: translateY(0);
+}
+
+.translate-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 2px 8px rgba(34, 103, 208, 0.1);
+}
+
+.app-footer {
+    display: none;
+}
+
+/* 4. History Panel Styles */
+.history-container {
+    /* Updated to be a fixed overlay for all mobile/tablet sizes */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 1000;
+    padding: 20px;
+    display: flex; /* Use flex to center the panel */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none; /* Make it unclickable when hidden */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.history-container.show {
+    opacity: 1;
+    pointer-events: auto; /* Make it clickable when shown */
+}
+
+.history-panel-inner {
+    background-color: var(--widget-bg);
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Take full width of parent (max-width handles the actual size) */
+    max-width: 500px; /* Limit width for tablets/larger phones */
+    height: auto; /* Content-driven height */
+    max-height: 85vh; /* Max height to fit screen */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    position: relative; /* For positioning close button */
+    transform: scale(0.95); /* Slight scale animation */
+    transition: transform 0.3s ease-in-out;
+}
+
+.history-container.show .history-panel-inner {
+    transform: scale(1);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between; /* Space out title and buttons */
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+    /* padding-right: 0; Removed, as history-header-actions handles its own spacing */
+}
+
+.history-header h2 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.2em;
+    color: var(--header-text);
+}
+
+/* New: History header action buttons container (Clear All and Close) */
+.history-header-actions {
+    display: flex;
+    gap: 10px; /* Space between clear and close buttons */
+    align-items: center;
+}
+
+/* History Close Button (X) - for mobile/overlay */
+.history-close-button {
+    /* Inherits .action-button styles for basic look */
+    /* Override specific properties for this button */
+    background: none; /* Ensure no background */
+    border: none;     /* Ensure no border */
+    font-size: 1.5em; /* Larger icon */
+    color: var(--icon-color); /* Icon color */
+    width: 32px; /* Fixed size */
+    height: 32px; /* Fixed size */
+    margin-left: 5px; /* Add a small margin to separate from Clear All */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+.history-close-button:hover {
+    background-color: var(--secondary-accent);
+    color: var(--primary-accent);
+}
+
+
+.clear-history-button {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    color: var(--primary-accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.clear-history-button:hover {
+    background-color: var(--primary-accent);
+    color: white;
+    border-color: var(--primary-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.history-item {
+    position: relative;
+    margin-bottom: 10px;
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 15px;
+}
+
+.history-item:hover {
+    background-color: var(--secondary-accent);
+    border-color: var(--primary-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.history-item-content {
+    cursor: pointer;
+}
+
+.history-date {
+    font-size: 0.8em;
+    color: var(--icon-color);
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.history-source {
+    margin: 0 0 8px 0;
+    font-size: 1em;
+    font-weight: 600;
+    word-wrap: break-word;
+    color: var(--text-color);
+}
+
+.translation-item {
+    margin: 0;
+    font-size: 1em;
+    word-wrap: break-word;
+    padding-left: 20px;
+    border-left: 3px solid var(--secondary-accent);
+    margin-top: 5px;
+    margin-left: 30px;
+    color: var(--text-color);
+}
+
+.translation-result {
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 15px;
+    margin-right: 20px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.translation-result:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.translation-result h4 {
+    margin: 0 0 10px 0;
+    color: var(--primary-accent);
+    font-size: 1.1em;
+}
+
+.translation-result p {
+    margin: 0;
+    font-size: 1.1em;
+    line-height: 1.4;
+}
+
+.delete-history-item {
+    background: none;
+    border: none;
+    color: var(--icon-color);
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 5px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.delete-history-item:hover {
+    opacity: 1;
+    color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+    transform: scale(1.1);
+}
+
+.no-history {
+    text-align: center;
+    color: var(--icon-color);
+    font-style: italic;
+    padding: 20px 0;
+}
+
+.loading {
+    color: var(--primary-accent);
+    animation: pulse 1.5s ease-in-out infinite;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 30px);
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (min-width: 700px) and (max-width: 1000px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;    
+        background-color: var(--widget-bg);
+        border-radius: 15px;
+        padding: 20px;
+        width: 90%;
+        min-width: 400px;
+        min-height: 530px;
+        box-sizing: border-box;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    .text-input-output {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    /* Show the bottom button, hide the between button for ultra-wide desktop */
+    .translate-btn-bottom {
+        display: none;
+    }
+    .translate-btn-between {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       /* margin-top: 32px;
+        margin-bottom: 0; */
+        width: 100%;
+        /* order: 3; */
+    } 
+}
+
+@media (min-width: 430px) and (max-width: 700px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;    
+        background-color: var(--widget-bg);
+        border-radius: 15px;
+        padding: 20px;
+        width: 80%;
+        min-width: 200px;
+        min-height: 400px;
+        box-sizing: border-box;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    .header h1{
+        margin: 0;
+        font-size: 1.25rem;
+        color: var(--header-text);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .theme-toggle-button {
+        background: var(--secondary-bg);
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        padding: 0;
+        border-radius: 50%;
+        color: var(--icon-color);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }    
+    .text-input-output {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    /* Show the bottom button, hide the between button for ultra-wide desktop */
+    .translate-btn-bottom {
+        display: none;
+    }
+    .translate-btn-between {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    } 
+    .language-select {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.95rem;
+    }
+
+    .from-lang {
+        flex: 1;
+        position: relative;
+        background-color: var(--secondary-bg);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        width: 100%;
+    }
+
+    .to-lang {
+        flex: 1;
+        position: relative;
+        background-color: var(--secondary-bg);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        width: 100%;
+    }      
+}
+
+@media (min-width: 305px) and (max-width: 430px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;    
+        background-color: var(--widget-bg);
+        border-radius: 15px;
+        padding: 20px;
+        width: 80%;
+        min-width: 250px;
+        min-height: 400px;
+        box-sizing: border-box;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    .header h1{
+        margin: 0;
+        font-size: 1rem;
+        color: var(--header-text);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .theme-toggle-button {
+        background: var(--secondary-bg);
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        padding: 0;
+        border-radius: 50%;
+        color: var(--icon-color);
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .language-select {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.8rem;
+    }
+
+    .from-lang {
+        flex: 1;
+        position: relative;
+        background-color: var(--secondary-bg);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        width: 100%;
+    }
+
+    .to-lang {
+        flex: 1;
+        position: relative;
+        background-color: var(--secondary-bg);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        width: 100%;
+    }    
+
+    .text-input-output {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    /* Show the bottom button, hide the between button for ultra-wide desktop */
+    .translate-btn-bottom {
+        display: none;
+    }
+    .translate-btn-between {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+    } 
+}
+
+@media (min-width: 295px) and (max-width: 305px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;    
+        background-color: var(--widget-bg);
+        border-radius: 15px;
+        padding: 20px;
+        width: 100%;
+        min-width: 200px;
+        min-height: 475px;
+        box-sizing: border-box;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    .header h1{
+        margin: 0;
+        font-size: 0.7rem;
+        color: var(--header-text);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .theme-toggle-button {
+        background: var(--secondary-bg);
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        padding: 0;
+        border-radius: 50%;
+        color: var(--icon-color);
+        font-size: 0.7rem;
+        transition: all 0.3s ease;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .language-select {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.5rem;
+    }
+
+    .from-lang {
+        flex: 1;
+        position: relative;
+        background-color: var(--secondary-bg);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        width: 100%;
+    }
+
+    .to-lang {
+        flex: 1;
+        position: relative;
+        background-color: var(--secondary-bg);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        width: 100%;
+    }    
+
+    .text-input-output {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+     .translate-btn-bottom {
+        display: none;
+    }
+    .translate-btn-between {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.5rem;
+    } 
+}
