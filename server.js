@@ -31,6 +31,10 @@ const swaggerOptions = {
     },
     servers: [
       {
+        url: `https://backend-translator-9m88.onrender.com`,
+        description: "Production server (Render)",
+      },
+      {
         url: `http://localhost:${port}`,
         description: "Local development server",
       },
@@ -61,7 +65,7 @@ app.get("/languages", async (req, res) => {
         method: "GET",
         headers: {
           "Ocp-Apim-Subscription-Key": subscriptionKey,
-          "Ocp-Apim-Subscription-Region": region,
+          "Ocp-Apim-Subscription-Region": region,       
         },
       }
     );
