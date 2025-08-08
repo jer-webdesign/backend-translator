@@ -209,6 +209,9 @@ npm start
 2. Access the Application:
    - **Main Application**: http://localhost:3000
    - **API Documentation**: http://localhost:3000/api-docs
+  
+<img width="854" height="599" alt="image" src="https://github.com/user-attachments/assets/b3370f0b-3627-4384-8b50-ce56d6f70e69" />
+   
 
 ### Production Deployment (GitHub to Render)
 
@@ -270,17 +273,20 @@ git push origin main
      - Start your application
      - Assign a URL (e.g., https://backend-translator.onrender.com)
 
-### Accessing Your Deployed Application
-
+### Running the Application on Production (Render Cloud Platform)
+## Accessing Your Deployed Application
 Once deployment is complete, your application will be available at:
 
 - **Main Application:** https://backend-translator.onrender.com
 - **Swagger API Documentation:** https://backend-translator.onrender.com/api-docs
 
-## Error Handling
+<img width="1003" height="546" alt="image" src="https://github.com/user-attachments/assets/8903aa28-9c22-4343-9968-a818bec9ffe1" />
 
-- The widget displays clear error messages if the backend returns an error or if the translation service is unreachable
-- Unexpected response formats are handled gracefully
+## Press “Try it out” and “Execute” button to retrieve a list of supported languages
+<img width="975" height="911" alt="image" src="https://github.com/user-attachments/assets/9161fc6c-379b-4224-acd5-f940fba6d327" />
+
+## Press “Try it out” and “Execute” button to translate the selected languages
+<img width="975" height="1206" alt="image" src="https://github.com/user-attachments/assets/5b51d245-0a76-4fbf-a934-229686338f6c" />
 
 ## Challenges and Solutions
 
@@ -329,7 +335,7 @@ servers: [
 - **Error Handling Documentation**: Documented all possible error responses
 - **Response Schema Definition**: Created detailed schemas for API responses
 
-## Impact Analysis
+## Reflective Analysis: Impact of Swagger Integration
 
 ### Enhanced Developer Experience
 
@@ -367,34 +373,43 @@ The Swagger integration has significantly improved the developer experience by p
 - **Bundle Size**: Additional dependencies increase overall application size by ~2MB
 - **Memory Usage**: Swagger UI adds minimal memory footprint (~5-10MB)
 
-## Future Improvements
+## Areas for Further Improvement
 
 ### 1. Enhanced Schema Definitions
+#### Current State: Basic request/response schemas Improvement Opportunity:
 - Add more detailed response examples
 - Include error response schemas with specific error codes
 - Document rate limiting and authentication requirements
 
 ### 2. Environment-Specific Documentation
+#### Current State: Local development server documentation Improvement Opportunity:
 - Multi-environment configuration (development, staging, production)
 - Environment-specific examples and endpoints
 - Deployment-specific documentation
 
 ### 3. API Versioning Documentation
+#### Current State: Single version documentation Improvement Opportunity:
 - Version history and changelog integration
 - Backward compatibility documentation
 - Migration guides for API updates
 
 ### 4. Security Documentation
+#### Current State: Basic authentication mention Improvement Opportunity:
 - Detailed authentication flow documentation
 - Security best practices
 - API key management guidelines
 
 ## Attributions
 
-- [Microsoft Azure Translator API](https://learn.microsoft.com/en-us/azure/ai-services/translator/)
-- [Express.js](https://expressjs.com/)
-- [Node.js](https://nodejs.org/)
-- [Swagger UI](https://swagger.io/tools/swagger-ui/)
-- [Render Cloud Platform](https://render.com/)
-- [Font Awesome](https://fontawesome.com/)
-- [Google Fonts](https://fonts.google.com/)
+- Microsoft. (n.d.). Translator Text API Documentation. Microsoft Azure Cognitive Services. https://learn.microsoft.com/en-us/azure/ai-services/translator/
+- Express. (n.d.). Express - Node.js web application framework. https://expressjs.com/
+- Node.js Foundation. (2025). Node.js (Version 14.0+) [JavaScript runtime]. https://nodejs.org/
+- OpenJS Foundation. (2025). Express.js [Web application framework]. https://expressjs.com/
+- CORS. (n.d.). cors - Node.js CORS middleware. https://github.com/expressjs/cors
+- Body-Parser. (n.d.). body-parser - Node.js body parsing middleware. https://github.com/expressjs/body-parser
+- Render. (n.d.). Render Cloud Platform. https://render.com/
+- GitHub. (n.d.). GitHub Pages Documentation. https://pages.github.com/
+- Swagger. (2025). Swagger UI Express [API documentation tool]. https://swagger.io/tools/swagger-ui/
+- SmartBear Software. (2025). What is Swagger? Swagger Documentation. https://swagger.io/docs/
+- Font Awesome, Inc. (2025). Font Awesome [Icon library]. https://fontawesome.com/
+- Google. (2025). Google Fonts [Web font service]. https://fonts.google.com/
