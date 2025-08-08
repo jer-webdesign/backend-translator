@@ -14,7 +14,7 @@ Bluelingo Translation Buddy is a web-based language translator widget that utili
 - **Copy Functionality**: One-click copying of translation results
 - **Interactive API Documentation**: Comprehensive Swagger UI for API exploration
 
-## Technology Stack
+## Technology Used
 
 ### Frontend
 - **HTML5**: Semantic markup structure
